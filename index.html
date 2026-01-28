@@ -11,7 +11,9 @@
             --text-color: #ffffff;
             --card-bg: #1e1e1e;
         }
+
         * { box-sizing: border-box; }
+
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,42 +22,121 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
-        .lang-container { position: fixed; top: 20px; right: 20px; z-index: 1001; }
+
+        /* ---------------- DİL MENÜSÜ ---------------- */
+        .lang-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
         .lang-select {
-            background: #000; color: #fff; border: 1px solid var(--primary-color);
-            padding: 8px 12px; cursor: pointer; border-radius: 8px; font-weight: bold; outline: none; transition: 0.3s;
+            background: #000;
+            color: #fff;
+            border: 1px solid var(--primary-color);
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            outline: none;
+            transition: 0.3s;
         }
+
         .lang-select:hover { border-color: #fff; }
+
+        /* ---------------- HEADER ---------------- */
         header {
-            text-align: center; padding: 100px 20px 60px;
+            text-align: center;
+            padding: 100px 20px 60px;
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; background-position: center;
+            background-size: cover;
+            background-position: center;
         }
-        .profile-logo { max-width: 120px; margin-bottom: 25px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.2)); }
+
+        .profile-logo {
+            max-width: 120px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
+        }
+
         .main-title { font-size: 3em; margin: 0; font-weight: 800; }
         .sub-title { margin-top: 10px; font-size: 1.2em; opacity: 0.8; }
         .sub-title span { color: var(--primary-color); }
+
+        /* ---------------- NAV ---------------- */
         nav {
-            position: sticky; top: 0; z-index: 100; background: #000;
-            padding: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #000;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
-        nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.8em; text-transform: uppercase; transition: color 0.3s; }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
         nav a:hover { color: var(--primary-color); }
+
+        /* ---------------- CONTENT ---------------- */
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
         section { margin-bottom: 60px; }
         h2 { border-left: 5px solid var(--primary-color); padding-left: 15px; margin-bottom: 25px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+        /* ---------------- KARTLAR VE IŞIK EFEKTİ ---------------- */
         .card {
-            position: relative; background: var(--card-bg); padding: 25px; border-radius: 12px;
-            text-align: center; border: 3px solid rgba(255, 255, 255, 0.06); overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+            position: relative;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            /* Işığın dışarı taşması için overflow: hidden KALDIRILDI */
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .card:hover { transform: translateY(-10px); border-color: rgba(231, 76, 60, 0.35); }
+
+           .card::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -30px;
+            width: 150%;
+            height: 60px;
+            background: radial-gradient(ellipse at center, rgba(231, 76, 60, 0.45), rgba(231, 76, 60, 0.0) 70%);
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card:hover { transform: translateY(-10px); border-color: rgba(231, 76, 60, 0.35); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.65); }
+        .card:hover::after { opacity: 1; }
+
         .btn {
-            display: inline-block; margin-top: 15px; padding: 12px 25px; background: var(--primary-color);
-            color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold; transition: transform 0.2s;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
         }
+
         .btn:hover { transform: scale(1.05); }
+
         footer { text-align: center; padding: 40px; background: #000; font-size: 0.9em; opacity: 0.7; }
     </style>
 </head>
@@ -92,7 +173,7 @@
 <div class="container">
     <section id="hakkimda">
         <h2 id="title-about">Hakkımda</h2>
-        <p id="desc-about">Merhaba, ben Görkem. 30.08.2000 doğumluyum ve sigortacıyım. YouTube ise benim için bu düzenin dışında kalan, daha rahat ve keyif aldığım bir alan. Burada günlük hayattan kesitler, gezdiğim yerler ve ilgimi çeken konular üzerine içerikler paylaşıyorum.<br><br>Gezmeyi seviyorum. Yeni yerler görmek, farklı ortamlar keşfetmek ve bunları kayda almak bana iyi geliyor. Bunun yanında saatler, parfümler ve dolma kalemler ilgi alanlarım arasında yer alıyor.</p>
+        <p id="desc-about">Merhaba, ben Görkem. 30.08.2000 doğumluyum ve sigortacıyım. YouTube benim için bu düzenin dışında kalan, keyif aldığım bir alan. Burada günlük hayattan kesitler ve gezdiğim yerleri paylaşıyorum.<br><br>Gezmeyi seviyorum, ayrıca saatler, parfümler ve dolma kalemler büyük ilgi alanım.</p>
     </section>
 
     <section id="sigorta">
@@ -135,10 +216,9 @@
         <h2 id="title-contact">İletişim</h2>
         <div class="card">
             <h3 id="card-contact-title">Bana Ulaşın</h3>
-            <p id="card-contact-desc">İş birlikleri veya sorularınız için aşağıdaki adreslerden mail atabilirsiniz.</p>
-            <div style="margin-top: 15px; line-height: 2;">
-                <strong>Mail 1:</strong> <a href="mailto:l86140173@gmail.com" style="color:var(--primary-color); text-decoration: none;">l86140173@gmail.com</a><br>
-                <strong>Mail 2:</strong> <a href="mailto:phopos02@gmail.com" style="color:var(--primary-color); text-decoration: none;">phopos02@gmail.com</a>
+            <p id="card-contact-desc">Sorularınız için aşağıdaki adreslerden mail atabilirsiniz.</p>
+            <div style="margin-top: 15px;">
+                <strong>Mail:</strong> <a href="mailto:l86140173@gmail.com" style="color:var(--primary-color); text-decoration: none;">l86140173@gmail.com</a>
             </div>
         </div>
     </section>
@@ -153,68 +233,62 @@
         tr: {
             "nav-twitter": "Twitter (X)", "nav-about": "Hakkımda", "nav-insurance": "Sigorta", "nav-hobbies": "Hobiler", "nav-vlogs": "Vloglar", "nav-contact": "İletişim", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
             "header-sub": "Sigortacı <span>•</span> Saat, kalem ve parfüm sever <span>•</span> Gezgin <span>•</span> İçerik Üreticisi",
-            "title-about": "Hakkımda",
-            "desc-about": "Merhaba, ben Görkem. 30.08.2000 doğumluyum ve sigortacıyım. YouTube benim için daha rahat ve keyif aldığım bir alan. Burada günlük hayattan kesitler ve gezdiğim yerleri paylaşıyorum.<br><br>Saatler, parfümler ve dolma kalemler ana ilgi alanlarım arasında yer alıyor.",
-            "title-insurance": "Sigorta Hizmetleri", "card-ins-title": "Teklif ve Bilgi Al", "card-ins-desc": "Trafik, Kasko ve Sağlık sigortaları için uygun çözümler sunuyorum.", "btn-quote": "Teklif İste",
-            "title-hobbies": "Hobiler", "hobby-1-title": "Fitness / Spor", "hobby-1-desc": "Haftalık antrenmanlarım ve gelişim sürecim.", "hobby-2-title": "Koleksiyon", "hobby-2-desc": "Saat, parfüm ve dolma kalemler.",
+            "title-about": "Hakkımda", "desc-about": "Merhaba, ben Görkem. Sigortacıyım ve YouTube üzerinde günlük hayattan kesitler paylaşıyorum. Saat, parfüm ve kalem koleksiyonu yapmayı seviyorum.",
+            "title-insurance": "Sigorta Hizmetleri", "card-ins-title": "Teklif Al", "card-ins-desc": "Sigorta çözümleri için buradayım.", "btn-quote": "Teklif İste",
+            "title-hobbies": "Hobiler", "hobby-1-title": "Fitness", "hobby-1-desc": "Spor ve gelişim.", "hobby-2-title": "Koleksiyon", "hobby-2-desc": "Saat, parfüm ve kalemler.",
             "title-vlogs": "Vloglar", "vlog-cover": "Vlog Kapak", "vlog-title": "YouTube Vloglarım", "btn-watch": "İzle",
-            "title-contact": "İletişim", "card-contact-title": "Bana Ulaşın", "card-contact-desc": "İş birlikleri veya sorularınız için mail atabilirsiniz.",
+            "title-contact": "İletişim", "card-contact-title": "Bize Yazın", "card-contact-desc": "Mail yoluyla ulaşabilirsiniz.",
             "footer-text": "&copy; 2024 Görkem Özdemir. Tüm hakları saklıdır."
         },
         en: {
             "nav-twitter": "Twitter (X)", "nav-about": "About", "nav-insurance": "Insurance", "nav-hobbies": "Hobbies", "nav-vlogs": "Vlogs", "nav-contact": "Contact", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
             "header-sub": "Insurer <span>•</span> Watch, pen and perfume lover <span>•</span> Traveler <span>•</span> Content Creator",
-            "title-about": "About Me",
-            "desc-about": "Hello, I'm Görkem. Born on 30.08.2000, I'm an insurer. YouTube is a space for me to share my daily life and travels.<br><br>Watches, perfumes, and fountain pens are my primary passions outside of work.",
-            "title-insurance": "Insurance Services", "card-ins-title": "Get a Quote", "card-ins-desc": "I offer solutions for Traffic, Motor, and Health insurance.", "btn-quote": "Request Quote",
-            "title-hobbies": "Hobbies", "hobby-1-title": "Fitness / Sports", "hobby-1-desc": "My weekly routines and progress.", "hobby-2-title": "Collection", "hobby-2-desc": "Watches, perfumes, and fountain pens.",
+            "title-about": "About Me", "desc-about": "Hi, I'm Görkem. I'm an insurer and content creator. I love collecting watches, perfumes, and fountain pens.",
+            "title-insurance": "Insurance Services", "card-ins-title": "Get a Quote", "card-ins-desc": "Professional insurance solutions.", "btn-quote": "Request Quote",
+            "title-hobbies": "Hobbies", "hobby-1-title": "Fitness", "hobby-1-desc": "Training and progress.", "hobby-2-title": "Collection", "hobby-2-desc": "Watches, perfumes, and pens.",
             "title-vlogs": "Vlogs", "vlog-cover": "Vlog Cover", "vlog-title": "YouTube Vlogs", "btn-watch": "Watch",
-            "title-contact": "Contact", "card-contact-title": "Contact Me", "card-contact-desc": "For collaborations or questions, feel free to email me.",
+            "title-contact": "Contact", "card-contact-title": "Contact Me", "card-contact-desc": "Send me an email.",
             "footer-text": "&copy; 2024 Görkem Özdemir. All rights reserved."
         },
         de: {
             "nav-twitter": "Twitter (X)", "nav-about": "Über mich", "nav-insurance": "Versicherung", "nav-hobbies": "Hobbys", "nav-vlogs": "Vlogs", "nav-contact": "Kontakt", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
             "header-sub": "Versicherer <span>•</span> Uhren-, Schreibgeräte- und Parfümliebhaber <span>•</span> Reisender <span>•</span> Content-Ersteller",
-            "title-about": "Über mich",
-            "desc-about": "Hallo, ich bin Görkem. Ich bin Versicherer und teile auf YouTube meine Reisen und mein tägliches Leben.<br><br>Uhren, Parfüms und Füllfederhalter sind meine großen Leidenschaften.",
-            "title-insurance": "Versicherungsdienste", "card-ins-title": "Angebot erhalten", "card-ins-desc": "Ich biete Lösungen für Kfz- und Krankenversicherungen an.", "btn-quote": "Angebot anfordern",
-            "title-hobbies": "Hobbys", "hobby-1-title": "Fitness / Sport", "hobby-1-desc": "Mein wöchentliches Training.", "hobby-2-title": "Sammlung", "hobby-2-desc": "Uhren, Parfüms und Schreibgeräte.",
+            "title-about": "Über mich", "desc-about": "Hallo, ich bin Görkem. Ich sammle Uhren, Parfüms und Füllfederhalter.",
+            "title-insurance": "Versicherungsdienste", "card-ins-title": "Angebot", "card-ins-desc": "Lösungen für Versicherungen.", "btn-quote": "Anfordern",
+            "title-hobbies": "Hobbys", "hobby-1-title": "Fitness", "hobby-1-desc": "Sport und Erfolg.", "hobby-2-title": "Sammlung", "hobby-2-desc": "Uhren und Stifte.",
             "title-vlogs": "Vlogs", "vlog-cover": "Vlog-Cover", "vlog-title": "YouTube-Vlogs", "btn-watch": "Ansehen",
-            "title-contact": "Kontakt", "card-contact-title": "Kontaktieren Sie mich", "card-contact-desc": "Für Kooperationen schreiben Sie mir bitte eine E-Mail.",
+            "title-contact": "Kontakt", "card-contact-title": "Kontakt", "card-contact-desc": "Schreiben Sie mir.",
             "footer-text": "&copy; 2024 Görkem Özdemir. Alle Rechte vorbehalten."
         },
         ru: {
             "nav-twitter": "Twitter (X)", "nav-about": "Обо мне", "nav-insurance": "Страхование", "nav-hobbies": "Хобби", "nav-vlogs": "Влоги", "nav-contact": "Контакт", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
             "header-sub": "Страховщик <span>•</span> Любитель часов, ручек и парфюмерии <span>•</span> Путешественник <span>•</span> Создатель контента",
-            "title-about": "Обо мне",
-            "desc-about": "Привет, я Гёркем. Я страховщик, а на YouTube я делюсь своими путешествиями и моментами из жизни.<br><br>Мои главные увлечения — это часы, парфюмерия и перьевые ручки.",
-            "title-insurance": "Страховые услуги", "card-ins-title": "Получить расчет", "card-ins-desc": "Я предлагаю услуги по автострахованию и страхованию здоровья.", "btn-quote": "Запросить расчет",
-            "title-hobbies": "Хобби", "hobby-1-title": "Фитнес", "hobby-1-desc": "Мои тренировки и прогресс.", "hobby-2-title": "Коллекция", "hobby-2-desc": "Часы, парфюмерия и ручки.",
+            "title-about": "Обо мне", "desc-about": "Привет, я Гёркем. Увлекаюсь коллекционированием часов и парфюмерии.",
+            "title-insurance": "Страхование", "card-ins-title": "Расчет", "card-ins-desc": "Страховые услуги.", "btn-quote": "Запросить",
+            "title-hobbies": "Хобби", "hobby-1-title": "Фитнес", "hobby-1-desc": "Спорт и прогресс.", "hobby-2-title": "Коллекция", "hobby-2-desc": "Часы и ручки.",
             "title-vlogs": "Влоги", "vlog-cover": "Обложка", "vlog-title": "YouTube влоги", "btn-watch": "Смотреть",
-            "title-contact": "Контакт", "card-contact-title": "Связаться", "card-contact-desc": "Пишите мне на почту по вопросам сотрудничества.",
-            "footer-text": "&copy; 2024 Гёркем Оздемир. Все права защищены."
+            "title-contact": "Контакт", "card-contact-title": "Связаться", "card-contact-desc": "Пишите на почту.",
+            "footer-text": "&copy; 2024 Гёркем Оздемир."
         },
         es: {
             "nav-twitter": "Twitter (X)", "nav-about": "Sobre mí", "nav-insurance": "Seguros", "nav-hobbies": "Aficiones", "nav-vlogs": "Vlogs", "nav-contact": "Contacto", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
             "header-sub": "Asegurador <span>•</span> Amante de los relojes, plumas y perfumes <span>•</span> Viajero <span>•</span> Creador de contenido",
-            "title-about": "Sobre mí",
-            "desc-about": "Hola, soy Görkem. Soy asegurador y en YouTube comparto mis viajes y mi vida diaria.<br><br>Mis grandes pasiones son los relojes, los perfumes y las plumas estilográficas.",
-            "title-insurance": "Servicios de Seguros", "card-ins-title": "Pedir presupuesto", "card-ins-desc": "Ofrezco soluciones de seguros de coche y salud.", "btn-quote": "Pedir presupuesto",
-            "title-hobbies": "Aficiones", "hobby-1-title": "Fitness", "hobby-1-desc": "Mi rutina y progreso semanal.", "hobby-2-title": "Colección", "hobby-2-desc": "Relojes, perfumes y plumas.",
+            "title-about": "Sobre mí", "desc-about": "Hola, soy Görkem. Me encantan los relojes, los perfumes y las plumas.",
+            "title-insurance": "Seguros", "card-ins-title": "Cotizar", "card-ins-desc": "Servicios de seguros.", "btn-quote": "Pedir",
+            "title-hobbies": "Aficiones", "hobby-1-title": "Fitness", "hobby-1-desc": "Deporte y salud.", "hobby-2-title": "Colección", "hobby-2-desc": "Relojes y plumas.",
             "title-vlogs": "Vlogs", "vlog-cover": "Portada", "vlog-title": "Vlogs de YouTube", "btn-watch": "Ver",
-            "title-contact": "Contacto", "card-contact-title": "Contáctame", "card-contact-desc": "Para colaboraciones, envíame un correo electrónico.",
-            "footer-text": "&copy; 2024 Görkem Özdemir. Todos los derechos reservados."
+            "title-contact": "Contacto", "card-contact-title": "Escríbeme", "card-contact-desc": "Por correo electrónico.",
+            "footer-text": "&copy; 2024 Görkem Özdemir."
         },
         jp: {
             "nav-twitter": "Twitter (X)", "nav-about": "自己紹介", "nav-insurance": "保険", "nav-hobbies": "趣味", "nav-vlogs": "ブログ", "nav-contact": "連絡先", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
             "header-sub": "保険業者 <span>•</span> 時計、ペン、香水の愛好家 <span>•</span> 旅行者 <span>•</span> コンテンツクリエイター",
-            "title-about": "自己紹介",
-            "desc-about": "こんにちは、ギョルケムです。保険の仕事をしながら、YouTubeで旅行や日常を発信しています。<br><br>私の主な情熱は、時計、香水、万年筆のコレクションです。",
-            "title-insurance": "保険サービス", "card-ins-title": "見積もり依頼", "card-ins-desc": "自動車保険や健康保険の最適なプランを提案します。", "btn-quote": "見積もりを依頼",
-            "title-hobbies": "趣味", "hobby-1-title": "フィットネス", "hobby-1-desc": "トレーニングと成長の記録。", "hobby-2-title": "コレクション", "hobby-2-desc": "時計、香水、万年筆。",
+            "title-about": "自己紹介", "desc-about": "こんにちは、ギョルケムです。時計、香水、万年筆のコレクションが大好きです。",
+            "title-insurance": "保険サービス", "card-ins-title": "見積もり", "card-ins-desc": "保険の解決策。", "btn-quote": "依頼する",
+            "title-hobbies": "趣味", "hobby-1-title": "フィットネス", "hobby-1-desc": "トレーニング。", "hobby-2-title": "コレクション", "hobby-2-desc": "時計とペン。",
             "title-vlogs": "ブログ", "vlog-cover": "カバー", "vlog-title": "YouTubeブログ", "btn-watch": "見る",
-            "title-contact": "連絡先", "card-contact-title": "お問い合わせ", "card-contact-desc": "お仕事の依頼などはメールでお願いします。",
-            "footer-text": "&copy; 2024 ギョルケム・オズデミル。全著作権所有。"
+            "title-contact": "連絡先", "card-contact-title": "お問い合わせ", "card-contact-desc": "メールでどうぞ。",
+            "footer-text": "&copy; 2024 ギョルケム・オズデミル。"
         }
     };
 
@@ -230,4 +304,3 @@
 </script>
 
 </body>
-</html>
