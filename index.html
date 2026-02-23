@@ -102,25 +102,29 @@
             border-radius: 12px;
             text-align: center;
             border: 2px solid rgba(255, 255, 255, 0.06);
-            /* Işığın dışarı taşması için overflow: hidden KALDIRILDI */
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
         }
 
-           .card::after {
+        .card::after {
             content: "";
             position: absolute;
             left: 50%;
-            bottom: -30px;
-            width: 150%;
-            height: 60px;
-            background: radial-gradient(ellipse at center, rgba(231, 76, 60, 0.45), rgba(231, 76, 60, 0.0) 70%);
+            bottom: -20px;
+            width: 80%;
+            height: 40px;
+            background: radial-gradient(ellipse at center, rgba(231, 76, 60, 0.5), rgba(231, 76, 60, 0) 70%);
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
         }
 
-        .card:hover { transform: translateY(-10px); border-color: rgba(231, 76, 60, 0.35); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.65); }
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
         .card:hover::after { opacity: 1; }
 
         .btn {
@@ -145,23 +149,24 @@
 <div class="lang-container">
     <select class="lang-select" onchange="changeLanguage(this.value)">
         <option value="tr">TR 🇹🇷</option>
-        <option value="en">EN 🇺🇸</option>
         <option value="de">DE 🇩🇪</option>
-        <option value="ru">RU 🇷🇺</option>
+        <option value="en">EN 🇺🇸</option>
         <option value="es">ES 🇪🇸</option>
         <option value="jp">JP 🇯🇵</option>
+        <option value="ru">RU 🇷🇺</option>
+        <option value="zh">ZH 🇨🇳</option>
     </select>
 </div>
 
 <nav>
-    <a href="https://x.com/peergunta/" target="_blank" id="nav-twitter">Twitter (X)</a>
+    <a href="https://x.com/peergunta/" target="_blank">Twitter (X)</a>
     <a href="#hakkimda" id="nav-about">Hakkımda</a>
     <a href="#sigorta" id="nav-insurance">Sigorta</a>
     <a href="#hobiler" id="nav-hobbies">Hobiler</a>
-    <a href="#vloglar" id="nav-vlogs">Vloglar</a>
+    <a href="#vloglar" id="nav-vlogs">İçerik</a>
     <a href="#iletisim" id="nav-contact">İletişim</a>
-    <a href="https://www.instagram.com/gorkem.ozdmir/" target="_blank" id="nav-instagram">Instagram</a>
-    <a href="https://www.youtube.com/@GRKM1" target="_blank" id="nav-youtube">YouTube</a>
+    <a href="https://www.instagram.com/gorkem.ozdmir/" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@GRKM1" target="_blank">YouTube</a>
 </nav>
 
 <header>
@@ -200,14 +205,20 @@
     </section>
 
     <section id="vloglar">
-        <h2 id="title-vlogs">Vloglar</h2>
+        <h2 id="title-vlogs-section">İçerik Kanallarım</h2>
         <div class="grid">
             <div class="card">
-                <div style="height:160px;background:#333;border-radius:8px;margin-bottom:15px;display:flex;align-items:center;justify-content:center;">
-                    🎬 <span id="vlog-cover">Vlog Kapak</span>
-                </div>
+                <div style="height:160px;background:#333;border-radius:8px;margin-bottom:15px;display:flex;align-items:center;justify-content:center;font-size:2em;">🎬</div>
                 <h3 id="vlog-title">YouTube Vloglarım</h3>
+                <p id="vlog-desc">Günlük hayat ve geziler.</p>
                 <a href="https://www.youtube.com/@GRKM1" class="btn" target="_blank" id="btn-watch">İzle</a>
+            </div>
+
+            <div class="card">
+                <div style="height:160px;background:#2c3e50;border-radius:8px;margin-bottom:15px;display:flex;align-items:center;justify-content:center;font-size:2em;">📜</div>
+                <h3 id="history-title">YouTube Tarih</h3>
+                <p id="history-desc">The Archive - Tarih Arşivi.</p>
+                <a href="https://www.youtube.com/@The.Arch%C4%B1veee" class="btn" target="_blank" id="btn-watch-2">İzle</a>
             </div>
         </div>
     </section>
@@ -216,11 +227,14 @@
         <h2 id="title-contact">İletişim</h2>
         <div class="card">
             <h3 id="card-contact-title">Bana Ulaşın</h3>
-            <p id="card-contact-desc">Sorularınız için aşağıdaki adreslerden mail atabilirsiniz.</p>
+            <p id="card-contact-desc">Sorularınız için aşağıdaki adresten mail atabilirsiniz.</p>
             <div style="margin-top: 15px;">
-                <strong>Mail:</strong> <a href="mailto:l86140173@gmail.com" style="color:var(--primary-color); text-decoration: none;">l86140173@gmail.com</a>
-                <strong>Mail:</strong> <a href="mailto:phopos02@gmail.com" style="color:var(--primary-color); text-decoration: none;">phopos02@gmail.com</a>
-                <strong>Mail:</strong> <a href="mailto:ihsan.ozdemir@gmail.com" style="color:var(--primary-color); text-decoration: none;">ihsan.ozdemir@gmail.com</a>
+                <div style="margin-bottom: 10px;">
+                    <strong>Mail:</strong> <a href="mailto:l86140173@gmail.com" style="color:var(--primary-color); text-decoration: none;">l86140173@gmail.com</a>
+                </div>
+                <div>
+                    <strong>Mail:</strong> <a href="mailto:phopos02@gmail.com" style="color:var(--primary-color); text-decoration: none;">phopos02@gmail.com</a>
+                </div>
             </div>
         </div>
     </section>
@@ -233,69 +247,94 @@
 <script>
     const translations = {
         tr: {
-            "nav-twitter": "Twitter (X)", "nav-about": "Hakkımda", "nav-insurance": "Sigorta", "nav-hobbies": "Hobiler", "nav-vlogs": "Vloglar", "nav-contact": "İletişim", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
+            "nav-about": "Hakkımda", "nav-insurance": "Sigorta", "nav-hobbies": "Hobiler", "nav-vlogs": "İçerik", "nav-contact": "İletişim",
             "header-sub": "Sigortacı <span>•</span> Saat, kalem ve parfüm sever <span>•</span> Gezgin <span>•</span> İçerik Üreticisi",
-            "title-about": "Hakkımda", "desc-about": "Merhaba, ben Görkem. Sigortacıyım ve YouTube üzerinde günlük hayattan kesitler paylaşıyorum. Saat, parfüm ve kalem koleksiyonu yapmayı seviyorum.",
+            "title-about": "Hakkımda", 
+            "desc-about": "Merhaba, ben Görkem. 30.08.2000 doğumluyum ve sigortacıyım. YouTube benim için bu düzenin dışında kalan, keyif aldığım bir alan. Burada günlük hayattan kesitler ve gezdiğim yerleri paylaşıyorum.<br><br>Gezmeyi seviyorum, ayrıca saatler, parfümler ve dolma kalemler büyük ilgi alanım.",
             "title-insurance": "Sigorta Hizmetleri", "card-ins-title": "Teklif Al", "card-ins-desc": "Sigorta çözümleri için buradayım.", "btn-quote": "Teklif İste",
             "title-hobbies": "Hobiler", "hobby-1-title": "Fitness", "hobby-1-desc": "Spor ve gelişim.", "hobby-2-title": "Koleksiyon", "hobby-2-desc": "Saat, parfüm ve kalemler.",
-            "title-vlogs": "Vloglar", "vlog-cover": "Vlog Kapak", "vlog-title": "YouTube Vloglarım", "btn-watch": "İzle",
+            "title-vlogs-section": "İçerik Kanallarım", "vlog-title": "YouTube Vloglarım", "vlog-desc": "Günlük hayat ve geziler.", "btn-watch": "İzle",
+            "history-title": "YouTube Tarih", "history-desc": "The Archive - Tarih Arşivi.", "btn-watch-2": "İzle",
             "title-contact": "İletişim", "card-contact-title": "Bize Yazın", "card-contact-desc": "Mail yoluyla ulaşabilirsiniz.",
             "footer-text": "&copy; 2024 Görkem Özdemir. Tüm hakları saklıdır."
         },
-        en: {
-            "nav-twitter": "Twitter (X)", "nav-about": "About", "nav-insurance": "Insurance", "nav-hobbies": "Hobbies", "nav-vlogs": "Vlogs", "nav-contact": "Contact", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
-            "header-sub": "Insurer <span>•</span> Watch, pen and perfume lover <span>•</span> Traveler <span>•</span> Content Creator",
-            "title-about": "About Me", "desc-about": "Hi, I'm Görkem. I'm an insurer and content creator. I love collecting watches, perfumes, and fountain pens.",
-            "title-insurance": "Insurance Services", "card-ins-title": "Get a Quote", "card-ins-desc": "Professional insurance solutions.", "btn-quote": "Request Quote",
-            "title-hobbies": "Hobbies", "hobby-1-title": "Fitness", "hobby-1-desc": "Training and progress.", "hobby-2-title": "Collection", "hobby-2-desc": "Watches, perfumes, and pens.",
-            "title-vlogs": "Vlogs", "vlog-cover": "Vlog Cover", "vlog-title": "YouTube Vlogs", "btn-watch": "Watch",
-            "title-contact": "Contact", "card-contact-title": "Contact Me", "card-contact-desc": "Send me an email.",
-            "footer-text": "&copy; 2024 Görkem Özdemir. All rights reserved."
-        },
         de: {
-            "nav-twitter": "Twitter (X)", "nav-about": "Über mich", "nav-insurance": "Versicherung", "nav-hobbies": "Hobbys", "nav-vlogs": "Vlogs", "nav-contact": "Kontakt", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
-            "header-sub": "Versicherer <span>•</span> Uhren-, Schreibgeräte- und Parfümliebhaber <span>•</span> Reisender <span>•</span> Content-Ersteller",
-            "title-about": "Über mich", "desc-about": "Hallo, ich bin Görkem. Ich sammle Uhren, Parfüms und Füllfederhalter.",
-            "title-insurance": "Versicherungsdienste", "card-ins-title": "Angebot", "card-ins-desc": "Lösungen für Versicherungen.", "btn-quote": "Anfordern",
-            "title-hobbies": "Hobbys", "hobby-1-title": "Fitness", "hobby-1-desc": "Sport und Erfolg.", "hobby-2-title": "Sammlung", "hobby-2-desc": "Uhren und Stifte.",
-            "title-vlogs": "Vlogs", "vlog-cover": "Vlog-Cover", "vlog-title": "YouTube-Vlogs", "btn-watch": "Ansehen",
-            "title-contact": "Kontakt", "card-contact-title": "Kontakt", "card-contact-desc": "Schreiben Sie mir.",
+            "nav-about": "Über mich", "nav-insurance": "Versicherung", "nav-hobbies": "Hobbys", "nav-vlogs": "Inhalt", "nav-contact": "Kontakt",
+            "header-sub": "Versicherer <span>•</span> Uhren-, Stift- und Parfümliebhaber <span>•</span> Reisender <span>•</span> Ersteller von Inhalten",
+            "title-about": "Über mich", 
+            "desc-about": "Hallo, ich bin Görkem. Ich wurde am 30.08.2000 geboren und bin Versicherer. YouTube ist für mich ein Bereich außerhalb der gewohnten Routine, der mir viel Freude bereitet. Hier teile ich Ausschnitte aus meinem täglichen Leben und meine Reisen.<br><br>Ich liebe das Reisen, zudem sind Uhren, Parfüms und Füllfederhalter meine großen Leidenschaften.",
+            "title-insurance": "Versicherungsleistungen", "card-ins-title": "Angebot anfordern", "card-ins-desc": "Ich bin hier für Versicherungslösungen.", "btn-quote": "Anfrage senden",
+            "title-hobbies": "Hobbys", "hobby-1-title": "Fitness", "hobby-1-desc": "Sport und Entwicklung.", "hobby-2-title": "Sammlung", "hobby-2-desc": "Uhren, Parfüms und Stifte.",
+            "title-vlogs-section": "Inhaltskanäle", "vlog-title": "YouTube Vlogs", "vlog-desc": "Alltag und Reisen.", "btn-watch": "Ansehen",
+            "history-title": "YouTube Geschichte", "history-desc": "The Archive - Geschichtsarchiv.", "btn-watch-2": "Ansehen",
+            "title-contact": "Kontakt", "card-contact-title": "Schreiben Sie uns", "card-contact-desc": "Sie können uns per E-Mail kontaktieren.",
             "footer-text": "&copy; 2024 Görkem Özdemir. Alle Rechte vorbehalten."
         },
-        ru: {
-            "nav-twitter": "Twitter (X)", "nav-about": "Обо мне", "nav-insurance": "Страхование", "nav-hobbies": "Хобби", "nav-vlogs": "Влоги", "nav-contact": "Контакт", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
-            "header-sub": "Страховщик <span>•</span> Любитель часов, ручек и парфюмерии <span>•</span> Путешественник <span>•</span> Создатель контента",
-            "title-about": "Обо мне", "desc-about": "Привет, я Гёркем. Увлекаюсь коллекционированием часов и парфюмерии.",
-            "title-insurance": "Страхование", "card-ins-title": "Расчет", "card-ins-desc": "Страховые услуги.", "btn-quote": "Запросить",
-            "title-hobbies": "Хобби", "hobby-1-title": "Фитнес", "hobby-1-desc": "Спорт и прогресс.", "hobby-2-title": "Коллекция", "hobby-2-desc": "Часы и ручки.",
-            "title-vlogs": "Влоги", "vlog-cover": "Обложка", "vlog-title": "YouTube влоги", "btn-watch": "Смотреть",
-            "title-contact": "Контакт", "card-contact-title": "Связаться", "card-contact-desc": "Пишите на почту.",
-            "footer-text": "&copy; 2024 Гёркем Оздемир."
+        en: {
+            "nav-about": "About", "nav-insurance": "Insurance", "nav-hobbies": "Hobbies", "nav-vlogs": "Content", "nav-contact": "Contact",
+            "header-sub": "Insurer <span>•</span> Watch, pen and perfume lover <span>•</span> Traveler <span>•</span> Content Creator",
+            "title-about": "About Me", 
+            "desc-about": "Hi, I'm Görkem. I was born on 30.08.2000 and I'm an insurer. YouTube is a space for me outside the usual routine where I find joy. Here, I share snippets of my daily life and the places I travel to.<br><br>I love traveling, and I have a great interest in watches, perfumes, and fountain pens.",
+            "title-insurance": "Insurance Services", "card-ins-title": "Get a Quote", "card-ins-desc": "I am here for insurance solutions.", "btn-quote": "Request Quote",
+            "title-hobbies": "Hobbies", "hobby-1-title": "Fitness", "hobby-1-desc": "Sports and progress.", "hobby-2-title": "Collection", "hobby-2-desc": "Watches, perfumes, and pens.",
+            "title-vlogs-section": "Content Channels", "vlog-title": "YouTube Vlogs", "vlog-desc": "Daily life and travels.", "btn-watch": "Watch",
+            "history-title": "YouTube History", "history-desc": "The Archive - History Archive.", "btn-watch-2": "Watch",
+            "title-contact": "Contact", "card-contact-title": "Contact Me", "card-contact-desc": "You can reach me via email.",
+            "footer-text": "&copy; 2024 Görkem Özdemir. All rights reserved."
         },
         es: {
-            "nav-twitter": "Twitter (X)", "nav-about": "Sobre mí", "nav-insurance": "Seguros", "nav-hobbies": "Aficiones", "nav-vlogs": "Vlogs", "nav-contact": "Contacto", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
-            "header-sub": "Asegurador <span>•</span> Amante de los relojes, plumas y perfumes <span>•</span> Viajero <span>•</span> Creador de contenido",
-            "title-about": "Sobre mí", "desc-about": "Hola, soy Görkem. Me encantan los relojes, los perfumes y las plumas.",
-            "title-insurance": "Seguros", "card-ins-title": "Cotizar", "card-ins-desc": "Servicios de seguros.", "btn-quote": "Pedir",
-            "title-hobbies": "Aficiones", "hobby-1-title": "Fitness", "hobby-1-desc": "Deporte y salud.", "hobby-2-title": "Colección", "hobby-2-desc": "Relojes y plumas.",
-            "title-vlogs": "Vlogs", "vlog-cover": "Portada", "vlog-title": "Vlogs de YouTube", "btn-watch": "Ver",
-            "title-contact": "Contacto", "card-contact-title": "Escríbeme", "card-contact-desc": "Por correo electrónico.",
-            "footer-text": "&copy; 2024 Görkem Özdemir."
+            "nav-about": "Sobre mí", "nav-insurance": "Seguros", "nav-hobbies": "Aficiones", "nav-vlogs": "Contenido", "nav-contact": "Contacto",
+            "header-sub": "Asegurador <span>•</span> Amante de relojes, plumas y perfumes <span>•</span> Viajero <span>•</span> Creador de contenido",
+            "title-about": "Sobre mí", 
+            "desc-about": "Hola, soy Görkem. Nací el 30.08.2000 y soy asegurador. YouTube es para mí un espacio fuera de la rutina habitual donde disfruto mucho. Aquí comparto fragmentos de mi vida diaria y los lugares que visito.<br><br>Me encanta viajar y tengo un gran interés en los relojes, los perfumes y las plumas estilográficas.",
+            "title-insurance": "Servicios de Seguros", "card-ins-title": "Obtener Cotización", "card-ins-desc": "Estoy aquí para soluciones de seguros.", "btn-quote": "Solicitar Cotización",
+            "title-hobbies": "Aficiones", "hobby-1-title": "Fitness", "hobby-1-desc": "Deporte y progreso.", "hobby-2-title": "Colección", "hobby-2-desc": "Relojes, perfumes y plumas.",
+            "title-vlogs-section": "Canales de contenido", "vlog-title": "YouTube Vlogs", "vlog-desc": "Vida cotidiana y viajes.", "btn-watch": "Ver",
+            "history-title": "YouTube Historia", "history-desc": "The Archive - Archivo Histórico.", "btn-watch-2": "Ver",
+            "title-contact": "Contacto", "card-contact-title": "Escríbenos", "card-contact-desc": "Puedes contactarnos por correo electrónico.",
+            "footer-text": "&copy; 2024 Görkem Özdemir. Todos los derechos reservados."
         },
         jp: {
-            "nav-twitter": "Twitter (X)", "nav-about": "自己紹介", "nav-insurance": "保険", "nav-hobbies": "趣味", "nav-vlogs": "ブログ", "nav-contact": "連絡先", "nav-instagram": "Instagram", "nav-youtube": "YouTube",
+            "nav-about": "自己紹介", "nav-insurance": "保険", "nav-hobbies": "趣味", "nav-vlogs": "コンテンツ", "nav-contact": "連絡先",
             "header-sub": "保険業者 <span>•</span> 時計、ペン、香水の愛好家 <span>•</span> 旅行者 <span>•</span> コンテンツクリエイター",
-            "title-about": "自己紹介", "desc-about": "こんにちは、ギョルケムです。時計、香水、万年筆のコレクションが大好きです。",
-            "title-insurance": "保険サービス", "card-ins-title": "見積もり", "card-ins-desc": "保険の解決策。", "btn-quote": "依頼する",
-            "title-hobbies": "趣味", "hobby-1-title": "フィットネス", "hobby-1-desc": "トレーニング。", "hobby-2-title": "コレクション", "hobby-2-desc": "時計とペン。",
-            "title-vlogs": "ブログ", "vlog-cover": "カバー", "vlog-title": "YouTubeブログ", "btn-watch": "見る",
-            "title-contact": "連絡先", "card-contact-title": "お問い合わせ", "card-contact-desc": "メールでどうぞ。",
-            "footer-text": "&copy; 2024 ギョルケム・オズデミル。"
+            "title-about": "自己紹介", 
+            "desc-about": "こんにちは、ギョルケムです。2000年8月30日生まれの保険業者です。YouTubeは私にとって日常のルーチンから離れ、楽しむための場所です。ここでは日々の生活の断片や旅先の風景を共有しています。<br><br>旅行が大好きで、時計、香水、万年筆に強い関心を持っています。",
+            "title-insurance": "保険サービス", "card-ins-title": "見積もりを依頼する", "card-ins-desc": "保険のソリューションをご提案します。", "btn-quote": "見積もりを依頼",
+            "title-hobbies": "趣味", "hobby-1-title": "フィットネス", "hobby-1-desc": "スポーツと成長。", "hobby-2-title": "コレクション", "hobby-2-desc": "時計、香水、万年筆。",
+            "title-vlogs-section": "コンテンツチャンネル", "vlog-title": "YouTubeブログ", "vlog-desc": "日常生活と旅行。", "btn-watch": "見る",
+            "history-title": "YouTube 歴史", "history-desc": "The Archive - 歴史アーカイブ。", "btn-watch-2": "見る",
+            "title-contact": "連絡先", "card-contact-title": "お問い合わせ", "card-contact-desc": "メールでお問い合わせいただけます。",
+            "footer-text": "&copy; 2024 Görkem Özdemir. 全著作権所有。"
+        },
+        ru: {
+            "nav-about": "Обо мне", "nav-insurance": "Страхование", "nav-hobbies": "Хобби", "nav-vlogs": "Контент", "nav-contact": "Контакт",
+            "header-sub": "Страховщик <span>•</span> Любитель часов, ручек и парфюмерии <span>•</span> Путешественник <span>•</span> Создатель контента",
+            "title-about": "Обо мне", 
+            "desc-about": "Привет, я Гёркем. Я родился 30.08.2000 и я страховщик. YouTube для меня — это пространство вне привычной рутины, в котором я нахожу радость. Здесь я делюсь фрагментами своей повседневной жизни и мест, где бываю.<br><br>Я люблю путешествовать, а также очень увлекаюсь часами, парфюмерией и перьевыми ручками.",
+            "title-insurance": "Страховые услуги", "card-ins-title": "Получить расчет", "card-ins-desc": "Я здесь для решения вопросов страхования.", "btn-quote": "Запросить расчет",
+            "title-hobbies": "Хобби", "hobby-1-title": "Фитнес", "hobby-1-desc": "Спорт и развитие.", "hobby-2-title": "Коллекция", "hobby-2-desc": "Часы, духи и ручки.",
+            "title-vlogs-section": "Каналы контента", "vlog-title": "YouTube влоги", "vlog-desc": "Повседневная жизнь и путешествия.", "btn-watch": "Смотреть",
+            "history-title": "YouTube История", "history-desc": "The Archive - Исторический архив.", "btn-watch-2": "Смотреть",
+            "title-contact": "Контакт", "card-contact-title": "Напишите нам", "card-contact-desc": "Вы можете связаться с нами по электронной почте.",
+            "footer-text": "&copy; 2024 Гёркем Оздемир. Все права защищены."
+        },
+        zh: {
+            "nav-about": "关于我", "nav-insurance": "保险", "nav-hobbies": "爱好", "nav-vlogs": "内容", "nav-contact": "联系方式",
+            "header-sub": "保险人 <span>•</span> 手表、钢笔和香水爱好者 <span>•</span> 旅行者 <span>•</span> 内容创作者",
+            "title-about": "关于我", 
+            "desc-about": "你好，我是 Görkem。我出生于 2000 年 8 月 30 日，是一名保险从业者。YouTube 是我日常工作之余享受生活的空间。在这里，我会分享日常生活片段和旅行见闻。<br><br>我热爱旅行，对手表、香水和钢笔也抱有浓厚的兴趣。",
+            "title-insurance": "保险服务", "card-ins-title": "获取报价", "card-ins-desc": "我在这里为您提供保险解决方案。", "btn-quote": "索取报价",
+            "title-hobbies": "爱好", "hobby-1-title": "健身", "hobby-1-desc": "运动与进步。", "hobby-2-title": "收藏", "hobby-2-desc": "手表、香水和钢笔。",
+            "title-vlogs-section": "内容频道", "vlog-title": "YouTube 视频", "vlog-desc": "日常生活与旅行。", "btn-watch": "观看",
+            "history-title": "YouTube 历史", "history-desc": "The Archive - 历史档案。", "btn-watch-2": "观看",
+            "title-contact": "联系方式", "card-contact-title": "联系我们", "card-contact-desc": "您可以通过电子邮件与我们联系。",
+            "footer-text": "&copy; 2024 Görkem Özdemir. 版权所有。"
         }
     };
 
     function changeLanguage(lang) {
         const langData = translations[lang];
+        if(!langData) return;
         for (let key in langData) {
             const element = document.getElementById(key);
             if (element) {
@@ -306,5 +345,4 @@
 </script>
 
 </body>
-
-
+</html>
